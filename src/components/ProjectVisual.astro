@@ -1,0 +1,70 @@
+---
+interface Props {
+  type: 'orbit' | 'map' | 'plots' | 'shelves' | 'fleet' | 'lanes' | 'network';
+}
+
+const { type } = Astro.props;
+---
+
+<div class:list={['project-visual', `visual--${type}`]} aria-hidden="true">
+  {type === 'orbit' && (
+    <>
+      <svg viewBox="0 0 100 100" role="presentation">
+        <ellipse cx="50" cy="50" rx="38" ry="16" />
+        <ellipse cx="50" cy="50" rx="38" ry="16" transform="rotate(60 50 50)" />
+        <ellipse cx="50" cy="50" rx="38" ry="16" transform="rotate(120 50 50)" />
+        <circle cx="50" cy="50" r="5" />
+        <circle cx="85" cy="43" r="2.5" />
+        <circle cx="27" cy="22" r="2.5" />
+        <circle cx="31" cy="78" r="2.5" />
+      </svg>
+      <strong>RAG</strong><span>SOURCE / CONTEXT</span>
+    </>
+  )}
+  {type === 'map' && (
+    <>
+      <svg viewBox="0 0 100 80" role="presentation">
+        <path d="M8 64c15-4 18-34 37-31 17 3 15 24 30 19 8-3 10-14 18-25" />
+        <path d="M14 18c13 9 23 8 31-4m5 58c11-8 25-6 39 1" />
+        <circle cx="18" cy="57" r="4" />
+        <circle cx="47" cy="34" r="4" />
+        <circle cx="76" cy="50" r="4" />
+        <circle cx="91" cy="27" r="4" />
+      </svg>
+      <strong>LOCAL</strong><span>MAP / PEOPLE</span>
+    </>
+  )}
+  {type === 'plots' && (
+    <>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      <span>API</span><span>WEB</span>
+    </>
+  )}
+  {type === 'shelves' && (
+    <>
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+      <span>STOCK</span><span>SALE</span><span>SHIP</span>
+    </>
+  )}
+  {type === 'fleet' && (
+    <>
+      <i></i><i></i><i></i><i></i><i></i>
+      <strong>8.4</strong><span>KM / L</span>
+    </>
+  )}
+  {type === 'lanes' && (
+    <>
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+      <strong>00:42.817</strong><span>FINISH</span>
+    </>
+  )}
+  {type === 'network' && (
+    <>
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+      <svg viewBox="0 0 100 70" role="presentation">
+        <path d="M14 54 35 22l25 28 26-37M14 54l46-4m-25-28 51-9" />
+      </svg>
+      <span>ASIGNACIÓN</span>
+    </>
+  )}
+</div>

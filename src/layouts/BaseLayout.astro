@@ -1,0 +1,87 @@
+---
+import '../styles/global.css';
+import Localized from '../components/Localized.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" data-locale="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#17241d" />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <script is:inline>
+      try {
+        const savedLocale = localStorage.getItem('az-locale');
+        if (savedLocale === 'en') {
+          document.documentElement.dataset.locale = 'en';
+          document.documentElement.lang = 'en';
+        }
+      } catch {}
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido"><Localized es="Saltar al contenido" en="Skip to content" /></a>
+    <slot />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        target?.scrollIntoView({ behavior: 'instant', block: 'start' });
+        target?.querySelectorAll('[data-reveal]').forEach((element) => element.classList.add('is-visible'));
+      }
+      const reveal = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              reveal.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll('[data-reveal]').forEach((element) => reveal.observe(element));
+
+      const languageToggle = document.querySelector('[data-language-toggle]');
+      const applyLocale = (locale) => {
+        document.documentElement.dataset.locale = locale;
+        document.documentElement.lang = locale;
+        languageToggle?.setAttribute(
+          'aria-label',
+          locale === 'es' ? 'Cambiar idioma a inglés' : 'Switch language to Spanish',
+        );
+        document.querySelectorAll('[data-aria-es][data-aria-en]').forEach((element) => {
+          element.setAttribute('aria-label', element.getAttribute(`data-aria-${locale}`) || '');
+        });
+        try {
+          localStorage.setItem('az-locale', locale);
+        } catch {}
+      };
+
+      applyLocale(document.documentElement.dataset.locale === 'en' ? 'en' : 'es');
+      languageToggle?.addEventListener('click', () => {
+        applyLocale(document.documentElement.dataset.locale === 'es' ? 'en' : 'es');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+---
+import type { Project } from '../data/projects';
+import Localized from './Localized.astro';
+import ProjectVisual from './ProjectVisual.astro';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article
+  class:list={['project-card', `project-card--${project.size}`, `project-card--${project.tone}`]}
+  id={project.slug}
+  data-reveal
+>
+  <header class="project-card__header">
+    <span class="project-card__number">{project.number}</span>
+    <div>
+      <p class="project-card__category"><Localized {...project.category} /></p>
+      <p class="project-card__status"><span aria-hidden="true"></span><Localized {...project.status} /></p>
+    </div>
+  </header>
+
+  <ProjectVisual type={project.visual} />
+
+  <div class="project-card__body">
+    <h3>{project.title}</h3>
+    <p class="project-card__summary"><Localized {...project.summary} /></p>
+    <p class="project-card__role"><Localized {...project.role} /></p>
+    <ul
+      class="tag-list"
+      aria-label="Tecnologías"
+      data-aria-es="Tecnologías"
+      data-aria-en="Technologies"
+    >
+      {project.technologies.map((technology) => <li>{technology}</li>)}
+    </ul>
+  </div>
+
+  <details class="project-card__details">
+    <summary>
+      <span><Localized es="Ver caso" en="View case" /></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </svg>
+    </summary>
+    <div class="project-card__case">
+      <div>
+        <span><Localized es="Reto" en="Challenge" /></span>
+        <p><Localized {...project.challenge} /></p>
+      </div>
+      <div>
+        <span><Localized es="Resultado" en="Outcome" /></span>
+        <p><Localized {...project.result} /></p>
+      </div>
+    </div>
+  </details>
+</article>
