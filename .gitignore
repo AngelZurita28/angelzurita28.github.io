@@ -2,8 +2,8 @@
 dist/
 # generated types
 .astro/
-.obsidian/
-.vscode/
+.obsidian
+.vscode
 
 
 # dependencies
