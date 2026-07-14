@@ -1,5 +1,6 @@
 ## RULES
 1. ALWAYS USE caveman SKILL. IF YOU CANT FIND IT OR CAN LOAD IT PROMPT THE USER FOR HELP. BUT NEVER CONTINUE WITHOUT IT.
+2. All information must be english and spanish
 
 ## Development
 

@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DESIGN.md",
+                "file": "Portafolio Renovado.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DESIGN"
+              "title": "Portafolio Renovado"
             }
           }
         ],
@@ -200,15 +200,19 @@
   },
   "active": "bc3dc61cc373404a",
   "lastOpenFiles": [
-    "Portafolio Renovado.md",
-    "INFO_LAYOUT.md",
     "dist/index.html",
-    "dist/_astro/index.BrMnyXCd.css",
+    "dist/_astro/index.C3j-up04.css",
     "dist/_astro",
     "dist/favicon.svg",
     "dist/favicon.ico",
-    "dist/_astro/index.DpU2EDRC.css",
+    "AGENTS.md",
+    "dist/_astro/index.AipSDxeF.css",
     "src/pages/index.astro",
+    "DESIGN.md",
+    "Portafolio Renovado.md",
+    "INFO_LAYOUT.md",
+    "dist/_astro/index.BrMnyXCd.css",
+    "dist/_astro/index.DpU2EDRC.css",
     "src/data/projects.ts",
     "src/components/Localized.astro"
   ]
