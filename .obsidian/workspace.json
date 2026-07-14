@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "INFO_LAYOUT"
             }
+          },
+          {
+            "id": "bc3dc61cc373404a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DESIGN.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DESIGN"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -183,8 +198,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "b5e4a7f239819ce1",
+  "active": "bc3dc61cc373404a",
   "lastOpenFiles": [
+    "Portafolio Renovado.md",
+    "INFO_LAYOUT.md",
     "dist/index.html",
     "dist/_astro/index.BrMnyXCd.css",
     "dist/_astro",
